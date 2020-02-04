@@ -111,7 +111,7 @@ If you are confident the problem is with the code, please report the [issue here
 
 Feature requests should be added via [issue system](https://github.com/oorail/oorail-system/issues).
 
-Please make sure you use *feature request*
+Please make sure you use the prefix *Request:* in the title, and select the label *enhancement*.
 
 ### Video
 
