@@ -1026,13 +1026,13 @@ void oorail_profile_init(void)
     switch (oorail_profile.loco[i].manufacturer) {
       case (OORAIL_MANUFACTURER_HORNBY):
         oorail_profile.loco[i].mfreq = OORAIL_PWM_FREQ_DEFAULT;
-        oorail_profile.loco[i].pidle = 32;
-        oorail_profile.loco[i].pstart = 48;
+        oorail_profile.loco[i].pidle = 28;
+        oorail_profile.loco[i].pstart = 40;
         oorail_profile.loco[i].pmax = 768;
-        oorail_profile.loco[i].pmaxspeed = 512;
-        oorail_profile.loco[i].pcrawl = 64;
-        oorail_profile.loco[i].pshunt = 96;
-        oorail_profile.loco[i].pcoast = 468;
+        oorail_profile.loco[i].pmaxspeed = 532;
+        oorail_profile.loco[i].pcrawl = 72;
+        oorail_profile.loco[i].pshunt = 108;
+        oorail_profile.loco[i].pcoast = 304;
         oorail_profile.loco[i].asteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].dsteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].ainertia = 640;
@@ -1064,13 +1064,13 @@ void oorail_profile_init(void)
 
       case (OORAIL_MANUFACTURER_DAPOL):
         oorail_profile.loco[i].mfreq = OORAIL_PWM_FREQ_DEFAULT;
-        oorail_profile.loco[i].pidle = 320;
-        oorail_profile.loco[i].pstart = 360;
+        oorail_profile.loco[i].pidle = 120;
+        oorail_profile.loco[i].pstart = 264;
         oorail_profile.loco[i].pmax = 1023;
         oorail_profile.loco[i].pmaxspeed = 1023;
-        oorail_profile.loco[i].pcrawl = 380;
+        oorail_profile.loco[i].pcrawl = 300;
         oorail_profile.loco[i].pshunt = 496;
-        oorail_profile.loco[i].pcoast = 815;
+        oorail_profile.loco[i].pcoast = 700;
         oorail_profile.loco[i].asteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].dsteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].ainertia = 450;
@@ -1084,12 +1084,12 @@ void oorail_profile_init(void)
       case (OORAIL_MANUFACTURER_BACHMANN):
         oorail_profile.loco[i].mfreq = OORAIL_PWM_FREQ_DEFAULT;
         oorail_profile.loco[i].pidle = 320;
-        oorail_profile.loco[i].pstart = 360;
+        oorail_profile.loco[i].pstart = 408;
         oorail_profile.loco[i].pmax = 1023;
         oorail_profile.loco[i].pmaxspeed = 1023;
-        oorail_profile.loco[i].pcrawl = 380;
-        oorail_profile.loco[i].pshunt = 420;
-        oorail_profile.loco[i].pcoast = 512;
+        oorail_profile.loco[i].pcrawl = 432;
+        oorail_profile.loco[i].pshunt = 512;
+        oorail_profile.loco[i].pcoast = 640;
         oorail_profile.loco[i].asteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].dsteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].ainertia = 512;
