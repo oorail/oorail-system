@@ -9,6 +9,12 @@ This is the initial release of the oorail-system. This implements a Digital
 DC (*DDC*) Model Railway Control System. For more information on the DDC 
 system please visit [https://oorail.co.uk/digital-dc](https://oorail.co.uk/digital-dc)
 
+DO *NOT* use this system with DCC fitted locomotives. DCC ready is OK.
+
+### Known Issues
+
++ [Bachmann All Lights On Issue](https://github.com/oorail/oorail-system/issues/1)
+
 ### New Features
 
 The following new features were implemented in this release:
@@ -25,6 +31,7 @@ L298N board.
 
 The Track Module provides the following features:
 
++ Light level independent of speed
 + Independent control of two tracks (Track A and Track B)
 + API control of the module via HTTP
 + Forward / Reverse Support
@@ -97,6 +104,7 @@ vary. Use with caution!
 + Use the ALL stop API command and remove power if you smell something burning
 + Profile support is very basic, it was added to make the initial release easier to use
 + Profile support will be extended in the next release
++ Some Bachmann Branchline locomotives have all running lights on
 
 ### Reporting Problems
 
