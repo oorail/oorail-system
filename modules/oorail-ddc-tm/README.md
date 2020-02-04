@@ -79,7 +79,7 @@ Example output:
 
 
 
-'''
+```
 15:47:02.582 -> oorail-track-module, version 1.0.0
 
 15:47:02.582 -> Copyright (c) 2020 IdeaPier LLC (oorail.co.uk)
@@ -127,4 +127,4 @@ Example output:
 15:47:02.682 -> entry 0x400806ac
 
 15:47:02.981 -> 
-'''
+```
