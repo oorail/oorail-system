@@ -59,3 +59,72 @@ Supported Hardware
 |/api/1/tm/0/travel/down|Set Track A Direction of Travel to Down Line|
 |/api/1/tm/1/travel/down|Set Track B Direction of Travel to Down Line|
 
+## Potential Problems
+
+### Brownout detector was triggered
+
+Some ESP32/ESP32S boards upon loading the code with WiFi enabled, may continously 
+software CPU reset (reboot) due to brownout detection. This happens when the power supply
+feeding your ESP32 board (most likely USB) cannot properly power the board.
+
+Fixes:
+
++ Try a powered USB hub
++ Try a different USB port on your computer
++ Try using a USB to AC adapter that has a higher current (Amp) rating
++ Use a shorter USB cable
++ Try powering the ESP32 module via the Vin / GND pins instead
+
+Example output:
+
+
+
+'''
+15:47:02.582 -> oorail-track-module, version 1.0.0
+
+15:47:02.582 -> Copyright (c) 2020 IdeaPier LLC (oorail.co.uk)
+
+15:47:02.582 -> 
+
+15:47:02.582 -> For additional information visit:
+
+15:47:02.582 ->  https://oorail.co.uk/tech/ 
+
+15:47:02.582 -> 
+
+15:47:02.582 -> License: GPLv3
+
+15:47:02.582 -> 
+
+15:47:02.582 ->  * Initializing Profile 
+
+15:47:02.649 -> 
+
+15:47:02.649 -> Brownout detector was triggered
+
+15:47:02.649 -> 
+
+15:47:02.649 -> ets Jun  8 2016 00:22:57
+
+15:47:02.649 -> 
+
+15:47:02.649 -> rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+
+15:47:02.649 -> configsip: 0, SPIWP:0xee
+
+15:47:02.682 -> clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+
+15:47:02.682 -> mode:DIO, clock div:1
+
+15:47:02.682 -> load:0x3fff0018,len:4
+
+15:47:02.682 -> load:0x3fff001c,len:1044
+
+15:47:02.682 -> load:0x40078000,len:8896
+
+15:47:02.682 -> load:0x40080400,len:5816
+
+15:47:02.682 -> entry 0x400806ac
+
+15:47:02.981 -> 
+'''
