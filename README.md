@@ -16,6 +16,12 @@ or 93!
 You can find more information and tutorial videos on our website at
 [https://oorail.co.uk/digital-dc](https://oorail.co.uk/digital-dc)
 
+### Supported Locomotives
+DC and DCC ready locomotives should run fine with this system. We do not
+recommend using DCC chipped locomotives with this system, even if they support
+DC operation. There is a risk that the L298N module could damage your DCC chips.
+Supporting DCC is in our roadmap, so please check back in the future for support.
+
 ### Release Schedule
 A new release is made available to everyone on the first Tuesday of the month.
 
