@@ -429,6 +429,18 @@ void oorail_web_brakeoff_b() {
   oorail_web_brakeoff(OORAIL_TRACK_B);
 }
 
+/*
+ * The travel API endpoint adjusts the direction of travel for a particular track.
+ * By default Track A is assumed to be the UP line
+ * By default Track B is assumed to be the DOWN line
+ * 
+ * The assumption is that all tracks are wired in the SAME POLARITY. This means that
+ * if the outside rail of Track A is + then the outside rail of Track B should also be +.
+ * 
+ * The software handles the direction via the L298N board.
+ * 
+ */
+
 #if !defined(OORAIL_FEATURE_ASYNC_WEB)
 void oorail_web_travel_a() {
   unsigned int travel = 0;
@@ -675,48 +687,86 @@ void oorail_web_debug() {
 #endif
 }
 
-/*
- * TODO - Add WIFI_LED support to profile functions
- */
-
 void oorail_web_profile() {
-  server.send(200, "text/plain", "\r\nNOT IMPLEMENTED\r\n");
+  char response[256];
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 1);
+#endif  
+
+  sprintf(response,"Track A Profile: %s\r\nTrack B Profile: %s\r\n\r\n",
+    oorail_profile_list_manufacturer(oorail_profile.loco[OORAIL_TRACK_A].manufacturer),
+    oorail_profile_list_manufacturer(oorail_profile.loco[OORAIL_TRACK_B].manufacturer));
+  server.send(200, "text/plain", response);
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 0);  
+#endif
 }
 
 void oorail_web_profile_bachmann() {
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 1);
+#endif
   oorail_profile_load(2);
   server.send(200, "text/plain", "\r\nBachmann Profile Loaded\r\n");
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 0);  
+#endif
 }
 
 void oorail_web_profile_custom() {
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 1);
+#endif
   oorail_profile_load(3);
   server.send(200, "text/plain", "\r\nCustom Profile Loaded\r\n");
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 0);  
+#endif
 }
 
 void oorail_web_profile_dapol() {
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 1);
+#endif  
   oorail_profile_load(4);
   server.send(200, "text/plain", "\r\nDepol Profile Loaded\r\n");  
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 0);  
+#endif
 }
 
 void oorail_web_profile_heljan() {
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 1);
+#endif
   oorail_profile_load(5);
   server.send(200, "text/plain", "\r\nHeljan Profile Loaded\r\n");  
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 0);  
+#endif
 }
 
 void oorail_web_profile_hornby() {
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 1);
+#endif
   oorail_profile_load(6);
   server.send(200, "text/plain", "\r\nHornby Profile Loaded\r\n");  
+#if defined(OORAIL_FEATURE_WIFI_LED)
+  digitalWrite(WIFI_LED, 0);  
+#endif
 }
 
 void oorail_web_info() {
   char response[1024];
-  String LocalIP = String() + WiFi.localIP()[0] + "." + WiFi.localIP()[1] + "." + WiFi.localIP()[2] + "." + WiFi.localIP()[3];
+  IPAddress oorail_ip = WiFi.localIP();
+
 #if defined(OORAIL_FEATURE_WIFI_LED)
   digitalWrite(WIFI_LED, 1);
 #endif
-  sprintf(response,"\r\n%s, version %s\r\n%s\r\n\r\nLicensed under %s\r\n\r\nModule IP: %s\r\n\r\nTrack A: %s\r\nTrack B: %s\r\n\r\n",
-    OORAIL_PROJECT, OORAIL_VERSION, OORAIL_COPYRIGHT, OORAIL_LICENSE, LocalIP, (oorail_tm.track_enabled[OORAIL_TRACK_A] == 1) ? "Enabled" : "Disabled",
-    (oorail_tm.track_enabled[OORAIL_TRACK_B] == 1) ? "Enabled" : "Disabled");
+  sprintf(response,"\r\n%s, version %s\r\n%s\r\n\r\nLicensed under %s\r\n\r\nModule IP: %d.%d.%d.%d\r\n\r\nTrack A: %s\r\nTrack B: %s\r\n\r\n",
+    OORAIL_PROJECT, OORAIL_VERSION, OORAIL_COPYRIGHT, OORAIL_LICENSE, oorail_ip[0], oorail_ip[1], oorail_ip[2], oorail_ip[3], 
+    (oorail_tm.track_enabled[OORAIL_TRACK_A] == 1) ? "Enabled" : "Disabled", (oorail_tm.track_enabled[OORAIL_TRACK_B] == 1) ? "Enabled" : "Disabled");
     server.send(200, "text/plain", response);
 #if defined(OORAIL_FEATURE_WIFI_LED)
   digitalWrite(WIFI_LED, 0);
@@ -996,16 +1046,16 @@ void oorail_profile_init(void)
       case (OORAIL_MANUFACTURER_HELJAN):
         oorail_profile.loco[i].mfreq = OORAIL_PWM_FREQ_DEFAULT;
         oorail_profile.loco[i].pidle = 400;
-        oorail_profile.loco[i].pstart = 480;
+        oorail_profile.loco[i].pstart = 465;
         oorail_profile.loco[i].pmax = 1023;
         oorail_profile.loco[i].pmaxspeed = 1023;
-        oorail_profile.loco[i].pcrawl = 520;
+        oorail_profile.loco[i].pcrawl = 505;
         oorail_profile.loco[i].pshunt = 700;
-        oorail_profile.loco[i].pcoast = 850;
+        oorail_profile.loco[i].pcoast = 825;
         oorail_profile.loco[i].asteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].dsteps = OORAIL_DEFAULT_SPEEDSTEP;
         oorail_profile.loco[i].ainertia = 450;
-        oorail_profile.loco[i].dinertia = 450;
+        oorail_profile.loco[i].dinertia = 650;
         oorail_profile.loco[i].brakeforce = OORAIL_DEFAULT_BRAKE;
         oorail_profile.loco[i].type = OORAIL_LOCOTYPE_UNKNOWN;
         oorail_profile.loco[i].lococlass = OORAIL_FALSE;
@@ -1100,6 +1150,87 @@ void oorail_profile_load(unsigned int p)
 
   oorail_tm.track_state[OORAIL_TRACK_A].max_speed = oorail_profile.loco[OORAIL_TRACK_A].pmaxspeed;
   oorail_tm.track_state[OORAIL_TRACK_A].coast_speed = oorail_profile.loco[OORAIL_TRACK_A].pcoast;
+}
+
+char *oorail_profile_list_manufacturer(unsigned int m)
+{
+  switch (m) {
+    case (OORAIL_MANUFACTURER_ACCURASCALE):
+      return ("Accurascale");
+      break;
+
+    case (OORAIL_MANUFACTURER_BACHMANN):
+      return ("Bachmann UK");
+      break;
+
+    case (OORAIL_MANUFACTURER_CAVALEX):
+      return ("Cavalex");
+      break;
+    
+    case (OORAIL_MANUFACTURER_DAPOL):
+      return ("Dapol");
+      break;
+    
+    case (OORAIL_MANUFACTURER_DJM):
+      return ("DJ Models");
+      break;
+    
+    case (OORAIL_MANUFACTURER_HATTONS):
+      return ("Hattons");
+      break;
+    
+    case (OORAIL_MANUFACTURER_HELJAN):
+      return ("Heljan");
+      break;
+    
+    case (OORAIL_MANUFACTURER_HORNBY):
+      return ("Hornby");
+      break;
+    
+    case (OORAIL_MANUFACTURER_KATO):
+      return ("Kato");
+      break;
+    
+    case (OORAIL_MANUFACTURER_KERNOW):
+      return ("Kernow Model Centre");
+      break;
+    
+    case (OORAIL_MANUFACTURER_LIMA):
+      return ("Lima");
+      break;
+    
+    case (OORAIL_MANUFACTURER_MURPHYMODELS):
+      return ("Murphy Models");
+      break;
+    
+    case (OORAIL_MANUFACTURER_OXFORDRAIL):
+      return ("Oxford Rail");
+      break;
+    
+    case (OORAIL_MANUFACTURER_RAILS):
+      return ("Rails of Sheffield");
+      break;
+    
+    case (OORAIL_MANUFACTURER_RAPIDO):
+      return ("Rapido Trains");
+      break;
+    
+    case (OORAIL_MANUFACTURER_REALTRACK):
+      return ("Realtrack Models");
+      break;
+    
+    case (OORAIL_MANUFACTURER_SCRATCHBUILT):
+      return ("Scratch / Kit Built");
+      break;
+    
+    case (OORAIL_MANUFACTURER_TRACKSIDE3D):
+      return ("Trackside3D");
+      break;
+
+    default:
+      return ("Unknown");
+       break;
+  }
 }
 
 void setup() {
