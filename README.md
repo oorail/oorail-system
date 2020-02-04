@@ -32,7 +32,7 @@ supporting this project with a paid subscription please [click here](https://oor
 #### 2020
 |Release Date|Release Version|Release Notes|Status|
 |------------|---------------|-------------|------|
-|Feb 4th 2020|1.0.0|NA|Released|
+|Feb 4th 2020|1.0.0|[Draft](https://github.com/oorail/oorail-system/blob/master/docs/release-notes/2020/Release-Notes-1.0.0.md)|Released|
 |Mar 3rd 2020|1.1.0|-|-|
 |Apr 7th 2020|1.2.0|-|-|
 |May 5th 2020|1.3.0|-|-|
