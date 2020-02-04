@@ -63,8 +63,9 @@ Supported Hardware
 
 ### Bachmann Branchline Lighting Issue
 
-During testing we noticed that some Bachmann Branchline (UK) would work fine but both the headlamps
-and tail lamps of the locomotive would be illuminated regardless of the direction of travel.
+During testing we noticed that some Bachmann Branchline (UK) would work fine but that all tail
+lamps would be illuminated regardless of the direction of travel.
+
 This problem does not occur with other manufacturers. As we do not know the exact root cause yet,
 we recommend avoiding powering Bachmann Branchline locomotives with this code if you 
 encounter this problem. 

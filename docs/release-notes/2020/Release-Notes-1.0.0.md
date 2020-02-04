@@ -13,7 +13,11 @@ DO *NOT* use this system with DCC fitted locomotives. DCC ready is OK.
 
 ### Known Issues
 
-+ [Bachmann All Lights On Issue](https://github.com/oorail/oorail-system/issues/1)
+There is an issue with some Bachmann Branchline (UK) locomotives having all their tail
+lamps always on. This problem can be worked around if the locomotive is equipped with a
+switch to turn tail lamps on/off. The problem is specific to Bachmann.
+
++ [Bachmann Tail Lights Always On Issue](https://github.com/oorail/oorail-system/issues/1)
 
 ### New Features
 
@@ -104,7 +108,7 @@ vary. Use with caution!
 + Use the ALL stop API command and remove power if you smell something burning
 + Profile support is very basic, it was added to make the initial release easier to use
 + Profile support will be extended in the next release
-+ Some Bachmann Branchline locomotives have all running lights on
++ Some Bachmann Branchline locomotives have all tail lights on regardless of direction
 
 ### Reporting Problems
 
