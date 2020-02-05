@@ -227,7 +227,8 @@ If you are using curl (example uses Heljan Class 35)
 |curl -X GET http://10.20.30.40/api/1/tm/0/speed/down|Slow down by speed steps|
 |curl -X GET http://10.20.30.40/api/1/tm/0/speed/up|Speed up by speed steps|
 
-If you want to use a web browser, just use the URLs above.
+If you want to use a web browser, just use the URLs above, but change 10.20.30.40 to the IP address
+displayed in the serial monitor for your ESP32 board.
 
 Note: The manufacturer profiles are intended to be starting points to play around with the
 system. You may need to modify the settings as some manufacturers vary loco to loco.
