@@ -18,6 +18,8 @@ lamps always on. This problem can be worked around if the locomotive is equipped
 switch to turn tail lamps on/off. The problem is specific to Bachmann.
 
 + [Bachmann Tail Lights Always On Issue](https://github.com/oorail/oorail-system/issues/1)
++ Serial monitor output and L298n initialization functions reference L283d instead of L298n (cosmetic)
++ Missing serial monitor output to indicate the module is ready (cosmetic)
 
 ### New Features
 
