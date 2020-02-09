@@ -32,7 +32,7 @@ supporting this project with a paid subscription please [click here](https://oor
 #### 2020
 |Release Date|Release Version|Release Notes|Status|
 |------------|---------------|-------------|------|
-|Feb 4th 2020|1.0.0|[Draft](https://github.com/oorail/oorail-system/blob/master/docs/release-notes/2020/Release-Notes-1.0.0.md)|Released|
+|Feb 4th 2020|1.0.0|[Released](https://github.com/oorail/oorail-system/blob/master/docs/release-notes/2020/Release-Notes-1.0.0.md)|Released|
 |Mar 3rd 2020|1.1.0|-|-|
 |Apr 7th 2020|1.2.0|-|-|
 |May 5th 2020|1.3.0|-|-|
@@ -56,6 +56,11 @@ for 3D printable components you can check out our [Trackside3D Shop](https://tra
 |Module Name|Module Function|Module Version|
 |-----------|---------------|--------------|
 |oorail-ddc-tm|Digital Control of DC Track|1.0.0|
+
+### Videos
+
++ [Track Module 1.0.0 Demo](https://www.youtube.com/watch?v=7SAbGZqmkYA)
+
 
 ### Quick Start
 
