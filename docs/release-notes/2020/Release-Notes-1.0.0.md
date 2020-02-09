@@ -129,5 +129,4 @@ Please make sure you use the prefix *Request:* in the title, and select the labe
 
 ### Video
 
-coming soon..
-
+[Initial Demo](https://www.youtube.com/watch?v=7SAbGZqmkYA)
