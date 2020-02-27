@@ -1,6 +1,6 @@
 /*
  *    oorail-ddc-module-template
- *    version 1.0.3
+ *    version 1.1.0
  *    
  *    Copyright (c) 2020 IdeaPier LLC, All Rights Reserved
  * 
@@ -62,7 +62,7 @@
 
 #define OORAIL_PROJECT "oorail-project"
 #define OORAIL_MDNS_HOSTNAME "oorail-template"
-#define OORAIL_VERSION "1.0.3"
+#define OORAIL_VERSION "1.1.0"
 
 #define OORAIL_COPYRIGHT "Copyright (c) 2020 IdeaPier LLC (oorail.co.uk)"
 #define OORAIL_LICENSE "GPLv3"
