@@ -51,6 +51,9 @@ sudo cat /etc/dphys-swapfile.original | sed 's/CONF_SWAPSIZE\=100/CONF_SWAPSIZE\
 sudo chown 0:0 /tmp/dphys-swapfile 
 sudo mv /tmp/dphys-swapfile /etc/
 
+# create directories for oorail system
+sudo mkdir /opt/oorail
+
 # logout (required for docker to take effect, run test.sh next)
 logout
 
