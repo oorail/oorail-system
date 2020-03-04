@@ -39,4 +39,11 @@ The images directory contains images to be deployed on ESP32, ESP8266, Arduino o
 
 The data directory contains the configuration, usage and other data related to your layout.
 
+### Docker Basic Commands
+
+'''
+docker-compose -f controller-compose.yaml up
+'''
+
+
 
