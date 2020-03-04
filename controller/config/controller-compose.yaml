@@ -9,3 +9,4 @@ services:
       - /oorail/data/web/:/web/sites
       - /oorail/images/modules:/web/modules
       - /oorail/images/sketches:/web/sketches
+      - /oorail/images/firmware:/web/firmware
