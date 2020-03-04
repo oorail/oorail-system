@@ -52,4 +52,8 @@ echo "LABEL=oorail-data /opt/oorail/data ext4 discard,noatime,commit=600,errors=
 sudo bash -c 'cat /tmp/fstab-add >> /etc/fstab'
 sudo mount -a
 
+echo ""
+echo "Cleanup"
+
+sudo rm -rf /tmp/fstab-add
 
