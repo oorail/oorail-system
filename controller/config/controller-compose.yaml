@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.17
+    ports:
+      - "80:80"
+    volumes:
+      - /oorail/data/conf/nginx:/etc/nginx/conf.d
+      - /oorail/data/web/:/web/sites
+      - /oorail/images/modules:/web/modules
+      - /oorail/images/sketches:/web/sketches

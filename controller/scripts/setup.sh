@@ -10,6 +10,12 @@ echo ""
 echo "oorail-system setup script"
 echo ""
 
+# set factory default hostname
+echo " * Setting hostname to oorail-system"
+sudo hostnamectl set-hostname oorail-system
+sudo bash -c "cp /etc/hosts /etc/hosts.orig"
+sudo bash -c "cat /etc/hosts.orig | sed 's/raspberrypi/oorail-system/g' > /etc/hosts"
+
 # enable ssh
 echo " * Enabling OpenSSH"
 systemctl enable ssh
@@ -34,6 +40,18 @@ sudo apt-get install -y python python-pip
 sudo apt-get remove -y python-configparser
 sudo pip install docker-compose
 
+# install git
+echo " * Installing git"
+sudo apt-get -y install git
+
+# install packages to support mdns
+echo " * Installing mdns"
+sudo apt-get -y install avahi-daemon
+sudo apt-get -y install libnss-mdns
+
+sudo bash -c 'cp /etc/nsswitch.conf /etc/nsswitch.conf.orig'
+sudo bash -c "cat /etc/nsswitch.conf.orig | sed 's/ dns/ dns mdns4/g' > /etc/nsswitch.conf"
+
 # disable swap
 echo " * Disable Swap"
 sudo dphys-swapfile swapoff
@@ -52,7 +70,16 @@ sudo chown 0:0 /tmp/dphys-swapfile
 sudo mv /tmp/dphys-swapfile /etc/
 
 # create directories for oorail system
+echo " * Creating oorail directory"
 sudo mkdir /opt/oorail
+
+# cleanup
+echo " * Cleanup"
+sudo apt autoremove -y
+
+# run a second pass of pip install for docker-compose
+echo " * Running second pass for docker-compose install"
+sudo pip install docker-compose
 
 # logout (required for docker to take effect, run test.sh next)
 logout
