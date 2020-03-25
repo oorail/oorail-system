@@ -212,14 +212,15 @@ const char* password = "REPLACE-ME-WITH-YOUR-WIFI-PASSWORD";
 void setup() {
   Serial.begin (OORAIL_SERIAL_BAUD);
   oorail_banner();
-#if defined(ESP32)
-#if defined(OORAIL_ESP32_MULTICORE)
-  oorail_multicore_init();
-#endif
-#endif
   oorail_wifi();
 #if defined(OORAIL_FEATURE_ASYNC_WEB)
   oorail_web_init();
+#endif
+#if defined(ESP32)
+#if defined(OORAIL_ESP32_MULTICORE)
+  /* Multicore needs to be executed AFTER WiFi to prevent ASSERT */
+  oorail_multicore_init();
+#endif
 #endif
 }
 
